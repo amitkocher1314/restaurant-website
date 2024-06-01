@@ -1,7 +1,9 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import Header from "./components/Layout/Header"
 import Meal from "./components/Meals/Meal";
 import CartForm from "./components/Cart/CartForm";
+import CartContext from "./store/cart-context";
+import CartProvider from "./store/CartProvider";
 function App() {
   const[clickStatus,setClickStatus] = useState(false);
   const cartShowStatus = ()=>{
@@ -11,7 +13,7 @@ function App() {
     setClickStatus(false)
   }
   return (
-    <Fragment>
+    <CartProvider>
 
     {clickStatus && <CartForm onClick = {cartHideStatus}/>}
     <Header  onClickButton={cartShowStatus}/>
@@ -19,7 +21,7 @@ function App() {
     <Meal />
     </main>
     
-    </Fragment>
+    </CartProvider>
   )
 }
 
