@@ -10,8 +10,12 @@ const CartForm = (props)=>{
   const totalAmount = `$${CartCtx.amount.toFixed(2)}`;
   const hasItem = CartCtx.item.length>0;
 
-  const addItemToCartHAndler =()=>{};
-  const removeItemFromCartHandler=()=>{}
+  const addItemToCartHAndler =(item)=>{
+    CartCtx.addItem({...item,amount:1})
+  };
+  const removeItemFromCartHandler=(id)=>{
+    CartCtx.removeItem(id);
+  }
 
  const cartItem = <ul className={style['cart-items']}> {CartCtx.item.map((item)=>
 (
